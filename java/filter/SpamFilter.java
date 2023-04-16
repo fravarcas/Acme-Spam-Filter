@@ -9,7 +9,7 @@ public class SpamFilter {
 	public static boolean antiSpamFilter(final String text, final Double threshold) {
 
 		final String[] forbiddenWords = {
-			"Sex", "Sexo", "Viagra", "Cialis", "OneMillion", "You'veWon", "HasGanado", "Nigeria"
+			"Sex", "Sexo", "Viagra", "Cialis", "OneMillion", "UnMillon", "You'veWon", "HasGanado", "Nigeria"
 		};
 
 		final List<String> forbiddenList = Arrays.asList(forbiddenWords);
