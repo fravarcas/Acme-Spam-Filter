@@ -9,7 +9,7 @@ public class SpamFilter {
 	public static boolean antiSpamFilter(final String text, final Double threshold) {
 
 		final String[] forbiddenWords = {
-			"Sex", "Sexo", "Viagra", "Cialis", "OneMillion", "You'veWon", "HasGanado", "Nigeria"
+			"Sex", "Sexo", "Viagra", "Cialis", "OneMillion", "UnMillon", "YouveWon", "HasGanado", "Nigeria"
 		};
 
 		final List<String> forbiddenList = Arrays.asList(forbiddenWords);
@@ -21,8 +21,8 @@ public class SpamFilter {
 		String nuevaCadena = "";
 
 		final String textWithoutExtraCharacters = text.replaceAll("[^a-zA-Z0-9 ]", "").toLowerCase();
-		final String[] palabras = textWithoutExtraCharacters.split(" ");
-		final List<String> wordList = Arrays.asList(palabras);
+		final String textWithoutExtraSpaces = textWithoutExtraCharacters.replaceAll("\\s+", " ");
+		final String[] palabras = textWithoutExtraSpaces.split(" ");
 		for (int i = 0; i < palabras.length; i++) {
 
 			final String palabra = palabras[i];
@@ -36,14 +36,14 @@ public class SpamFilter {
 
 		totalWordsCount = (double) palabras.length;
 
-		final String analiticText = nuevaCadena.toString().replaceAll(" ", "").concat("a");
+		final String analiticText = nuevaCadena.toString().replaceAll(" ", "").concat("A");
 
 		for (final String forbiddenWord : forbiddenList) {
 
 			int position = analiticText.indexOf(forbiddenWord);
 
 			while (position != -1) {
-				if (!Character.isUpperCase(analiticText.charAt(position + forbiddenWord.length())))
+				if (Character.isUpperCase(analiticText.charAt(position + forbiddenWord.length())))
 					forbiddenWordsCount++;
 				position = analiticText.indexOf(forbiddenWord, position + 1);
 			}
