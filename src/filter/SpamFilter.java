@@ -18,25 +18,25 @@ public class SpamFilter {
 		double forbiddenWordsCount = 0.0;
 		Double percentageOfForbiddenWords;
 		boolean res = false;
-		String nuevaCadena = "";
+		String newString = "";
 
 		final String textWithoutExtraCharacters = text.replaceAll("[^a-zA-Z0-9 ]", "").toLowerCase();
 		final String textWithoutExtraSpaces = textWithoutExtraCharacters.replaceAll("\\s+", " ");
-		final String[] palabras = textWithoutExtraSpaces.split(" ");
-		for (int i = 0; i < palabras.length; i++) {
+		final String[] words = textWithoutExtraSpaces.split(" ");
+		for (int i = 0; i < words.length; i++) {
 
-			final String palabra = palabras[i];
-			final String primeraLetra = palabra.substring(0, 1);
-			final String restoPalabra = palabra.substring(1);
-			final String primeraLetraMayuscula = primeraLetra.toUpperCase();
-			final String palabraMayuscula = primeraLetraMayuscula + restoPalabra;
-			nuevaCadena += palabraMayuscula + " ";
+			final String palabra = words[i];
+			final String firstLetter = palabra.substring(0, 1);
+			final String restWord = palabra.substring(1);
+			final String firstLetterUppercase = firstLetter.toUpperCase();
+			final String wordUppercase = firstLetterUppercase + restWord;
+			newString += wordUppercase + " ";
 
 		}
 
-		totalWordsCount = (double) palabras.length;
+		totalWordsCount = (double) words.length;
 
-		final String analiticText = nuevaCadena.toString().replaceAll(" ", "").concat("A");
+		final String analiticText = newString.toString().replaceAll(" ", "").concat("A");
 
 		for (final String forbiddenWord : forbiddenList) {
 
